@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h2.page-header Register
+    p Please Register using the form below
+    hr
+    .container
+        form(action="/users/register", method="post", enctype="mulitpart/form-data")
+        .form-group
+        label Name
+        input.form-control(name = 'Username', type='text', placeholder="Enter Name")
+        .form-group
+        label Email
+        input.form-control(name = 'Email', type='text', placeholder="Enter Email")
+        .form-group
+        label Password
+        input.form-control(name = 'Password', type='password', placeholder="Enter Password")
+        .form-group
+        label Password2
+        input.form-control(name = 'Password2', type='password', placeholder="Confirm Password")
+        .form-group
+        label Profile Image
+        input.form-control(name = 'ProfileImage', type='file', placeholder="Enter Profile Image")
+        br
+        input(name="Submit", type="submit", value="Register", class="btn btn-primary")
+
+

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h2.page-header Login
+    p Please Login to Your Account
+    hr
+    .container
+        form(action="/users/login", method="post")
+        .form-group
+        label Username
+        input.form-control(name = 'Username', type='text', placeholder="Enter Name")
+       
+        .form-group
+        label Password
+        input.form-control(name = 'Password', type='password', placeholder="Enter Password")
+        br
+        input(name="Submit", type="submit", value="Register", class="btn btn-primary")
+
+
