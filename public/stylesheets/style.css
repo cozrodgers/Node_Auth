@@ -5,3 +5,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+ul.success li {
+  background-color: greenyellow;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+  list-style:none;
+}
+ul.error li {
+  background-color: rgb(214, 47, 35);
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+}

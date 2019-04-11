@@ -3,25 +3,32 @@ extends layout
 block content
     h2.page-header Register
     p Please Register using the form below
+        if errors
+            each error, i in errors
+                div.alert.alert-danger #{error.msg}
+   
     hr
     .container
-        form(action="/users/register", method="post", enctype="mulitpart/form-data")
+    form(action="/users/register", method="post", enctype="multipart/form-data")
         .form-group
-        label Name
-        input.form-control(name = 'Username', type='text', placeholder="Enter Name")
+            label Name
+            input.form-control(name = 'Name', type='text', placeholder="Enter Name")
         .form-group
-        label Email
-        input.form-control(name = 'Email', type='text', placeholder="Enter Email")
+            label Email
+            input.form-control(name = 'Email', type='text', placeholder="Enter Email")
         .form-group
-        label Password
-        input.form-control(name = 'Password', type='password', placeholder="Enter Password")
+            label Username
+            input.form-control(name = 'Username', type='text', placeholder="Enter Username")
         .form-group
-        label Password2
-        input.form-control(name = 'Password2', type='password', placeholder="Confirm Password")
+            label Password
+            input.form-control(name = 'Password', type='password', placeholder="Enter Password")
         .form-group
-        label Profile Image
-        input.form-control(name = 'ProfileImage', type='file', placeholder="Enter Profile Image")
-        br
+            label Password2
+            input.form-control(name = 'Password2', type='password', placeholder="Confirm Password")
+        .form-group
+            label Profile Image
+            input.form-control(name = 'avatar', type='file', placeholder="Enter Profile Image")
+            br
         input(name="Submit", type="submit", value="Register", class="btn btn-primary")
 
 
