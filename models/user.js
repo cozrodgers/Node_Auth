@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const database_name = "nodeauth";
 
+//use bcrypt here..
+var bcrypt = require('bcryptjs');
+
+//db settings (use new URL parser)
 mongoose.connect(`mongodb://localhost/${database_name}`, { useNewUrlParser: true })
+
+//set db to use a create index
 mongoose.set('useCreateIndex', true);
 //create mongoose connection variable
 const db = mongoose.connection;
@@ -36,5 +42,17 @@ const User = module.exports = mongoose.model('User', UserSchema);
 
 //Export this function that creates the user
 module.exports.createUser = function(newUser, callBack){
-    newUser.save(callBack);
+    
+    //start encryption here
+    bcrypt.genSalt(10, function(err, salt) {
+        // Params ( What we want to encrypt, callback function)
+        bcrypt.hash(newUser.Password, salt, function(err, hash) {
+            // Store hash in your password DB.
+            newUser.Password= hash;
+            //Save all above to the new user
+            newUser.save(callBack);
+        });
+    });
+
+ 
 }
