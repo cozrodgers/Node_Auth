@@ -78,7 +78,8 @@ router.post('/register', upload.single('avatar'), function (req, res, next) {
     
       }
       else{
-      console.log(user);}
+      console.log(user);
+    }
       //flashes message provide the CLASS and the MESSAGE in the params
       
     });

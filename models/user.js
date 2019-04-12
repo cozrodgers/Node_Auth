@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const database_name = "nodeauth";
 
-mongoose.connect(`mongodb://localhost/${database_name}`)
-
+mongoose.connect(`mongodb://localhost/${database_name}`, { useNewUrlParser: true })
+mongoose.set('useCreateIndex', true);
 //create mongoose connection variable
 const db = mongoose.connection;
 
