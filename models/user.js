@@ -1,16 +1,19 @@
+//use mongoose
 const mongoose = require('mongoose');
+
+//define db name
 const database_name = "nodeauth";
 
 //use bcrypt here..
 var bcrypt = require('bcryptjs');
 
+//create mongoose connection variable
+const db = mongoose.connection;
 //db settings (use new URL parser)
 mongoose.connect(`mongodb://localhost/${database_name}`, { useNewUrlParser: true })
 
 //set db to use a create index
 mongoose.set('useCreateIndex', true);
-//create mongoose connection variable
-const db = mongoose.connection;
 
 
 //Begin Schema of User 
@@ -40,6 +43,20 @@ const UserSchema = mongoose.Schema({
 //Allow for this File to be used outside of this file and in ('./app.js')
 const User = module.exports = mongoose.model('User', UserSchema);
 
+//functions to find id and usernames 
+User.getUserById = (id, callBack)  => User.findById(id, callBack);
+User.comparePassword = (candidatePassword, hash, callBack)  => {
+    bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+        callBack(null, isMatch);
+  
+    }) 
+};
+
+User.getUserByUsername = (Username, callBack)  => {
+    const query = {Username : Username};
+    User.findOne(query, callBack);
+}
+
 //Export this function that creates the user
 module.exports.createUser = function(newUser, callBack){
     
@@ -55,4 +72,5 @@ module.exports.createUser = function(newUser, callBack){
     });
 
  
+
 }
