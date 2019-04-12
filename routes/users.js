@@ -30,7 +30,16 @@ router.get('/login', function (req, res, next) {
   });
 });
 
+router.get('/logout', function (req, res) {
+ req.logout();
+ req.flash('success', "you are now logged out");
+ res.redirect('/users/login');
 
+ 
+});
+
+
+// start post methods here ----->>
 router.post('/login',
   passport.authenticate('local',{failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
   function(req, res) {

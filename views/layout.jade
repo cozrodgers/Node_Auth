@@ -8,7 +8,7 @@ html
   
 .container
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  a.navbar-brand(href='#') Navbar
+  a.navbar-brand(href='#') NodeAuth
   #navbarNavDropdown.collapse.navbar-collapse
     ul.navbar-nav
       li(class=(title == 'Members' ? 'active' : ''))
@@ -17,6 +17,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
         a.nav-link(href='/users/login') Login
       li(class=(title == 'Register' ? 'active' : ''))
         a.nav-link(href='/users/register') Register
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='/users/logout') Logout
    
 br
 !=messages()
